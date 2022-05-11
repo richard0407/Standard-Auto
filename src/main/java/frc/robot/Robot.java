@@ -30,17 +30,18 @@ public class Robot extends TimedRobot {
   /** This function is called when the autonomous is enabled. */
   @Override
   public void autonomousInit() {
-    SendableChooser<Command> autonomousCommandChooser = new SendableChooser<>();
+    new StandardAuto(this.robotContainer.drivetrain).schedule();
 
-    autonomousCommandChooser.addOption("Standard", new StandardAuto());
+    // SendableChooser<Command> autonomousCommandChooser = new SendableChooser<>();
 
-    autonomousCommand = autonomousCommandChooser.getSelected();
+    // autonomousCommandChooser.addOption("Standard", new StandardAuto(this.robotContainer.drivetrain));
 
-    autonomousCommandChooser.close();
+    // autonomousCommand = autonomousCommandChooser.getSelected();
+    // autonomousCommandChooser.close();
 
-    if(autonomousCommand != null){
-      autonomousCommand.schedule();
-    }
+    // if(autonomousCommand != null){
+    //   autonomousCommand.schedule();
+    // }
   }
 
   /** This function is called periodically during autonomous control. */

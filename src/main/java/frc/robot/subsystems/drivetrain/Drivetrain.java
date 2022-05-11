@@ -75,4 +75,8 @@ public class Drivetrain extends SubsystemBase {
             turnFilter.calculate(turn)
         );
     }
+
+    public double getHeading(){
+        return gyro.getRotation2d().getDegrees();
+    }
 }

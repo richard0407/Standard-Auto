@@ -8,7 +8,7 @@ public class RobotContainer {
     private final XboxController driverController = new XboxController(0);
     private final XboxController manipulatorController = new XboxController(1);
 
-    private final Drivetrain drivetrain = new Drivetrain();
+    public final Drivetrain drivetrain = new Drivetrain();
 
     public RobotContainer(){
         drivetrain.setDefaultCommand(new RunCommand(() -> {
