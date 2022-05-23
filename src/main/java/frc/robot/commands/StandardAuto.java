@@ -51,5 +51,12 @@ public class StandardAuto extends SequentialCommandGroup {
         );
 
         addRequirements(drivetrain);
+        
+        addCommands(
+            new IntakeBall(intake,nPower,true);
+            new WaitCommand(2.0);
+            new OuttakeBall(intake,nPower,true);
+            )
+        addRequirements(intake);
     }
 }
