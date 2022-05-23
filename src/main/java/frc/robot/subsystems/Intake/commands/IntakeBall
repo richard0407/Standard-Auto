@@ -1,0 +1,48 @@
+package frc.robot.subsystems.intake.commands;
+
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
+import frc.robot.subsystems.intake.Intake;
+import frc.robot.RobotContainer;
+
+public class IntakeBall extends CommandBase {
+    private Intake intake;
+    private double power;
+    private boolean ballReady;
+
+    public IntakeBall(Intake intake, boolean RobotContainer.Xboxcontroller.XButton, double RobotContainer.Xboxcontroller.rightStick){
+        this.intake = intake;
+        this.RobotContainer.Xboxcontroller.rightStick = power;
+        this.RobotContainer.Xboxcontroller.XButton = ballReady;
+        addRequirements(intake);
+    }
+
+    @Override
+    public void execute(){
+      if(this.ballReady == true){
+        for(i = 0; i = Constant.Intake.NecessaryRotation; i++){
+          if(power>0){
+            this.intake.run(1 * power, 0);
+          }else{
+            this.intake.run(0, 0);
+          }
+        }
+      }
+      return i;
+    }
+
+    @Override
+    public boolean isFinished(){
+      if(i = Constant.Intake.NecessaryRotation){
+        desiredState = true;
+      }else{
+        desiredState = false;
+      }
+      return desiredState;
+    }
+
+    @Override
+    public void end(boolean interrupted){
+        this.intake.run(0, 0);
+    }
+}
