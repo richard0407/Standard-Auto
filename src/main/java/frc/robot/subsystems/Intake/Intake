@@ -1,0 +1,63 @@
+package frc.robot.subsystems.intake;
+
+import com.kauailabs.navx.frc.AHRS;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel;
+import com.revrobotics.RelativeEncoder;
+import com.revrobotics.CANSparkMax.IdleMode;
+
+import edu.wpi.first.math.filter.SlewRateLimiter;
+import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
+import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
+
+public class Intake extends SubsystemBase {
+    private final static int kPort = 0;
+    private final static double kP = 0;
+    private final static double kI = 0;
+    private final static double kD = 0;
+    private final static double kFF = 0;
+  
+    private CANSparkMax Intake = new CANSparkMax(Intake.kport, CANSparkMaxLowLevel.IntakeType.kBrushless);
+    public RelativeEncoder IntakeEncoder = Intake.getEncoder();
+    private SparkMaxPIDController controller;
+
+    private DifferentialDrive differentialDrive = new DifferentialDrive(Intake);
+    private DifferentialDriveOdometry odemetry = new DifferentialDriveOdometry();
+
+    private SlewRateLimiter throttleFilter = new SlewRateLimiter(Constants.kThrottleFilter);
+    private SlewRateLimiter turnFilter = new SlewRateLimiter(Constants.kTurnFilter);
+
+    public Intake(){
+        Intake.setInverted(false);
+        Intake.setIdleMode(IdleMode.kBrake);
+        IntakeEncoder.setPositionConversionFactor(Constants.Trajectory.kDistPerRot);
+        IntakeEncoder.setPosition(0);
+
+        this.intake = new CANSparkMax(Intake.kPort, CANSparkMax.IntakeType.kBrushless);
+        this.encoder = this.intake.getEncoder();
+
+        this.controller = this.intake.getPIDController();
+        this.controller.setP(Intake.kP); 
+        this.controller.setI(Intake.kI); 
+        this.controller.setD(Intake.kD); 
+        this.controller.setFF(Intake.kFF);
+
+    }
+
+    @Override
+    public void periodic() {
+        odometry.update(IntakeEncoder.getPosition(), IntakeEndcoder.getVelocity());
+    }
+
+    public void run(double throttle, double turn){
+        differentialDrive.arcadeDrive(
+            throttleFilter.calculate(throttle),
+            turnFilter.calculate(turn)
+        );
+    }
+
+}
