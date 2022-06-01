@@ -7,29 +7,31 @@ public class HighballGoal extends Commandbase{
   private Turret turret;
   private double shootAngle;
   private boolean ballShot;
-  private double highGoal;
+  private double highGoalbig;
+  private double highGoalSmall;
   private double shotFinished;
   
   public HighballGoal(Turret turret, double shootAngle) {
     this.turret = turret;
     this.shootAngle = shootAngle;
-    this.ballShot = ballShot;
-    this.highGoal = highGoal;
-    this.shotFinished = shotFinished; 
+    this.ballShot = false;
+    this.highGoalBig = 90.0;
+    this.highGoalSmall = 45.0;
+    this.shotFinished = 1.0; 
     addRequirements(turret);
   }
   @Override
   public void execute(){
-    if(shootAngle == highGoal){
+    if(shootAngle < highGoalBig && shootAngle > highGoalSmall){
       this.turret.shootPower(double Container.kHighBallToGoalSpeed);
     }else{
-      boolean ballShot = false;
+      boolean ballShot = true;
     } 
   }
   @Override 
   public boolean isFinished(){
     if(shootFinished != 0.0){
-      boolean ballShot = true;
+      boolean ballShot = false;
     }
     return ballShot;
   }
