@@ -58,5 +58,11 @@ public class StandardAuto extends SequentialCommandGroup {
             new OuttakeBall(intake,nPower,true);
             )
         addRequirements(intake);
+        
+        addCommands(
+            new HighballGoal(turret,shootAngle);
+            new LowballGoal(turret,shootAngle);
+            )
+        addRequirements(turret);
     }
 }
