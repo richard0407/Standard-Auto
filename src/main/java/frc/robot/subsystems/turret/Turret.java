@@ -45,11 +45,11 @@ public class Turret extends SubsystemBase {
       if(indexerPostion > 0){
         this.angleMotor.set(angleEncoder.getposition(double Container.kBallToGoalAngle))
       }else{
-        indexerEncoder.getposition()
+        indexerEncoder.getposition();
       }
     }
       
-    public void shootPower(double Container.kBallToGoalShootSpeed){
-      this.speedMotor.set(double Container.kBallToGoalShootSpeed)
+    public void shootPower(double shootball){
+      this.speedMotor.set(double shootball);
     }
 }
