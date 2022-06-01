@@ -14,4 +14,12 @@ public class Constants {
 
         public static final double kSafeForwardThrottle = 0.05;
     }
+    public static final class Intake {
+        public static final double kThrottleFilter = 1.5;
+        public static final double kTurnFilter = 1.5;
+
+        public static final double kPower = 0.1;
+        public static final double kNecessaryRotations = 4.0;
+
+    }
 }
