@@ -13,3 +13,43 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants; 
+
+public class Turret extends SubsystemBase {
+    private final static int kPort = 0;
+    private final static double kP = 0;
+    private final static double kI = 0;
+    private final static double kD = 0;
+    private final static double kFF = 0;
+  
+    private CANSparkMax Turret = new CANSparkMax(Turret.kport, CANSparkMaxLowLevel.MotorType.kBrushless);
+    private CANSparkMax Turret = new CANSparkMax(Turret.kport, CANSparkMaxLowLevel.MotorType.kBrushless);
+    public RelativeEncoder TurretEncoder = Turret.getEncoder();
+    private SparkMaxPIDController controller;
+
+
+    public Turret(){
+        this.angleMotor = new CANSparkMax(Turret.kPort, CANSparkMax.TurretType.kBrushless);
+        this.speedMotor = new CANSparkMax(Turret.kPort, CANSparkMax.TurretType.kBrushless);
+        
+        this.angleEncoder = this.turret.getEncoder();
+
+        this.speedController = this.turret.getPIDController();
+        this.speedController.setP(Turret.kP); 
+        this.speedController.setI(Turret.kI); 
+        this.speedController.setD(Turret.kD); 
+        this.speedController.setFF(Turret.kFF);
+
+    }
+    
+    public void setAngle(double Container.kBallToGoalAngle){
+      if(indexerPostion > 0){
+        this.angleMotor.set(angleEncoder.getposition(double Container.kBallToGoalAngle))
+      }else{
+        indexerEncoder.getposition()
+      }
+    }
+      
+    public void shootPower(double Container.kBallToGoalShootSpeed){
+      this.speedMotor.set(double Container.kBallToGoalShootSpeed)
+    }
+}
