@@ -15,8 +15,8 @@ public class LowballGoal extends Commandbase{
     this.turret = turret;
     this.shootAngle = shootAngle;
     this.ballShot = false;
-    this.lowGoalBig = 0;
-    this.lowGoalSmall = 45;
+    this.lowGoalBig = 45.0;
+    this.lowGoalSmall = 0.0;
     this.shotFinished = 1.0; 
     addRequirements(turret);
   }
