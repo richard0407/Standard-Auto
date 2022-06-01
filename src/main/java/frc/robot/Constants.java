@@ -20,6 +20,9 @@ public class Constants {
 
         public static final double kPower = 0.1;
         public static final double kNecessaryRotations = 4.0;
-
+    }
+    public static final class Turret{
+        public static final double kHighBallToGoalSpeed = 5.0;
+        public static final double kLowBallToGoalSpeed = 5.0;
     }
 }
