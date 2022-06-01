@@ -51,6 +51,7 @@ public class Turret extends SubsystemBase {
       
     public void shootPower(double shootSpeed){
       this.speedMotor.set(double shootSpeed);
+      double shotFinished = 0.0;
       return shotFinished;
     }
 }
