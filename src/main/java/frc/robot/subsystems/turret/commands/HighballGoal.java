@@ -6,16 +6,16 @@ import frc.robot.subsystems.turret.Turret;
 public class HighballGoal extends Commandbase{
   private Turret turret;
   private double shootAngle;
-  private double shootSpeed;
   private boolean ballShot;
   private double highGoal;
+  private double shotFinished;
   
-  public HighballGoal(Turret turret, double shootAngle, double shootSpeed) {
+  public HighballGoal(Turret turret, double shootAngle) {
     this.turret = turret;
     this.shootAngle = shootAngle;
-    this.shootSpeed = shootSpeed;
     this.ballShot = ballShot;
     this.highGoal = highGoal;
+    this.shotFinished = shotFinished; 
     addRequirements(turret);
   }
   @Override
@@ -28,7 +28,7 @@ public class HighballGoal extends Commandbase{
   }
   @Override 
   public boolean isFinished(){
-    if(shootSpeed != 0.0){
+    if(shootFinished != 0.0){
       boolean ballShot = true;
     }
     return ballShot;
